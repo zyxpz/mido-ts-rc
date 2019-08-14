@@ -1,0 +1,30 @@
+{
+  "extends": ["mido", "plugin:react/recommended"],
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "markdown"
+  ],
+  "rules": {
+    "no-unused-vars": 1,
+    "require-yield": 0,
+    "no-useless-constructor": 1,
+    "react/prop-types": 1
+  },
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  },
+  "settings": {
+    "import/ignore": [
+      "node_modules"
+    ],
+    "react": {
+      "pragma": "React",
+      "version": "16.8.0"
+    }
+  }
+}

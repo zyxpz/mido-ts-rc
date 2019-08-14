@@ -1,0 +1,14 @@
+.Rules {
+  color: blue;
+}
+
+.rule-wrap-conditions {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: solid 1px blue;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 5px;
+}
+

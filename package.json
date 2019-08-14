@@ -1,0 +1,100 @@
+{
+  "name": "mido-rc",
+  "version": "1.0.0",
+  "description": "react组件库",
+  "author": "Midnight Blues",
+  "bugs": {},
+  "main": "es/index/index.js",
+  "module": "es/index/index.js",
+  "directories": {
+    "es": "es"
+  },
+  "license": "ISC",
+  "scripts": {
+    "start": "npm run dev",
+    "creat": "node ./config/getProject.js",
+    "cp": "node ./config/creatProject.js",
+    "dev": "npm run clearSource && npm run creat && npm run es-lint:watch && cross-env NODE_ENV=development mido dev -p 9001",
+    "build": "npm run clearSource && cross-env NODE_ENV=production npm run creat && cross-env NODE_ENV=production mido build",
+    "lib": "npm run clearSource && npm run creat && rollup -c ./rollup/rollup.config.js",
+    "clearSource": "node ./config/clearSource.js",
+    "publish": "npm run lib && npm publish",
+    "lint": "esw ./config/*.* ./src/**/*.js",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:watch": "npm run lint -- --fix --watch &",
+    "lint:style": "stylelint --fix --syntax less src/web/**/*.less &",
+    "es-lint:watch": "npm run lint:watch && npm run lint:style",
+    "lint-staged": "lint-staged",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/plugin-external-helpers": "^7.2.0",
+    "@types/react-dom": "^16.8.5",
+    "art-template": "^4.13.2",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
+    "babel-plugin-import": "^1.12.0",
+    "chalk": "^2.4.2",
+    "cross-env": "^5.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^5.16.0",
+    "eslint-config-mido": "^1.0.0",
+    "eslint-plugin-markdown": "^1.0.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-watch": "^5.1.2",
+    "fs-extra": "^8.0.1",
+    "glob": "^7.1.4",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.2.0",
+    "mido-construct": "^1.2.3",
+    "pre-commit": "^1.2.2",
+    "react-dom": "^16.9.0",
+    "rollup": "^1.17.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-flow": "^1.1.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-uglify": "^6.0.2",
+    "stylelint": "^10.0.1",
+    "stylelint-config-standard": "^18.3.0",
+    "ts-jest": "^24.0.2"
+  },
+  "dependencies": {
+    "antd": "^3.20.2",
+    "antd-mobile": "^2.2.14",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "xlsx": "^0.15.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.x"
+  },
+  "lint-staged": {
+    "{src,config}/**/*.{js,jsx,vue}": [
+      "esw --fix",
+      "git add",
+      "npm run test"
+    ],
+    "src/web/**/*.md": [
+      "esw --ext '.md' --fix",
+      "git add"
+    ],
+    "src/web/**/*.less": [
+      "stylelint --fix --syntax less",
+      "git add"
+    ]
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "files": [
+    "es",
+    "package.json",
+    "README.md"
+  ]
+}

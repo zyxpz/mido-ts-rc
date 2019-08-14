@@ -1,0 +1,7 @@
+node_modules/**
+**/*.css
+**/*.html
+.vscode
+package-lock
+dist
+src/web/*/__test__

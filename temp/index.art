@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  a{ 
+    text-decoration:none; 
+  } 
+  .list {
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    background: #eee;
+    line-height: 50px;
+    border: 2px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  .even-list {
+    color: palevioletred;
+  }
+  .odd-list {
+    color: skyblue;
+  }
+</style>
+<body>
+  <% cpList.forEach(function (item,i) { %>
+  <a href="<%= item.file %>">
+    <div
+    <%if(i%2===0){%>
+      class="list even-list"
+    <%}else{%>
+      class="list odd-list"
+    <%}%>
+    >
+    <span>●</span>
+    <span><%=item.name%></span>
+    </div>
+  </a>
+  <% }) %>
+</body>
+</html>

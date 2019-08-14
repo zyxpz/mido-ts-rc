@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "moduleResolution": "node",
+    "target": "esnext",
+    "module": "esnext",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "sourceMap": true
+  },
+  "exclude": ["node_modules", "dist", "build", "mock", "temp"]
+}
