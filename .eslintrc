@@ -1,15 +1,17 @@
 {
   "extends": ["mido", "plugin:react/recommended"],
-  "parser": "babel-eslint",
+  "parser": "typescript-eslint-parser",
   "plugins": [
     "react",
-    "markdown"
+    "markdown",
+    "typescript"
   ],
   "rules": {
     "no-unused-vars": 1,
     "require-yield": 0,
     "no-useless-constructor": 1,
-    "react/prop-types": 1
+    "react/prop-types": 1,
+    "no-mixed-spaces-and-tabs": 0
   },
   "parserOptions": {
     "ecmaVersion": 7,

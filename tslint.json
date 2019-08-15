@@ -1,5 +1,9 @@
 {
-  "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"],
+  "extends": [
+    "tslint:latest",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
   "rules": {
     "no-var-requires": false,
     "no-submodule-imports": false,
@@ -10,6 +14,14 @@
     "no-empty": false,
     "no-reference": false,
     "no-angle-bracket-type-assertion": false,
-    "no-empty-interface": false
+    "no-empty-interface": false,
+    "no-mixed-spaces-and-tabs": false
+  },
+  "linterOptions": {
+    // 排除的文件
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**"
+    ]
   }
 }

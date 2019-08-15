@@ -1,5 +1,5 @@
 {
-  "name": "mido-rc",
+  "name": "mido-ts-rc",
   "version": "1.0.0",
   "description": "react组件库",
   "author": "Midnight Blues",
@@ -19,7 +19,7 @@
     "lib": "npm run clearSource && npm run creat && rollup -c ./rollup/rollup.config.js",
     "clearSource": "node ./config/clearSource.js",
     "publish": "npm run lib && npm publish",
-    "lint": "esw ./config/*.* ./src/**/*.js",
+    "lint": "esw ./src/**/*.ts ./src/**/*.tsx",
     "lint:fix": "npm run lint -- --fix",
     "lint:watch": "npm run lint -- --fix --watch &",
     "lint:style": "stylelint --fix --syntax less src/web/**/*.less &",
@@ -43,6 +43,7 @@
     "eslint-config-mido": "^1.0.0",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-typescript": "^0.14.0",
     "eslint-watch": "^5.1.2",
     "fs-extra": "^8.0.1",
     "glob": "^7.1.4",
@@ -54,15 +55,15 @@
     "rollup": "^1.17.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-clear": "^2.0.7",
-    "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-eslint": "^7.0.0",
-    "rollup-plugin-flow": "^1.1.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-postcss": "^2.0.3",
-    "rollup-plugin-uglify": "^6.0.2",
+    "rollup-plugin-typescript2": "^0.22.1",
     "stylelint": "^10.0.1",
     "stylelint-config-standard": "^18.3.0",
-    "ts-jest": "^24.0.2"
+    "ts-jest": "^24.0.2",
+    "typescript": "~3.2.1",
+    "typescript-eslint-parser": "^22.0.0"
   },
   "dependencies": {
     "antd": "^3.20.2",

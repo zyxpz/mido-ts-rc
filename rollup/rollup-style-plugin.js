@@ -19,7 +19,7 @@ const writeStyle = (file, cpLess) => {
    */
 	const lessFile = path.join(process.cwd(), 'es', file, 'style/index.js');
 	fs.outputFileSync(lessFile, `import './less/index.less';`);
-  
+
 	/**
    * 在css文件中写入js
    * 按需加载 style: 'css'
@@ -56,11 +56,13 @@ export default (fileName) => {
 				const fileExtName = path.extname(filePath);
 
 				if (fileExtName === '.less') {
-					// 获取less内容
-					const cpLess = fs.readFileSync(filePath, {
-						encoding: 'utf-8'
-					});
-					writeStyle(cpName, cpLess);
+					if (!/examples/.test(filePath)) {
+						// 获取less内容
+						const cpLess = fs.readFileSync(filePath, {
+							encoding: 'utf-8'
+						});
+						writeStyle(cpName, cpLess);
+					}
 				}
 			}
 		});

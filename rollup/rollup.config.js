@@ -9,11 +9,13 @@ import path from 'path';
 /**
  * rollup plugin
  */
+import { DEFAULT_EXTENSIONS } from '@babel/core';
 import babel from 'rollup-plugin-babel';
 import clear from 'rollup-plugin-clear';
 import { eslint } from 'rollup-plugin-eslint';
 import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
+import typescript from 'rollup-plugin-typescript2';
 import stylePlugin from './rollup-style-plugin';
 
 
@@ -28,7 +30,7 @@ const getModules = () => {
 	return cModuleNames.reduce((prev, name) => {
 		const newPrev = prev;
 		if (name !== '.DS_Store') {
-			newPrev[name] = `${componentDir}/${name}/index.js`;
+			newPrev[name] = `${componentDir}/${name}/index.ts`;
 		}
 		return newPrev;
 	}, {});
@@ -72,7 +74,7 @@ const rollupConfig = () => {
 const creatModule = (cModuleMap, external) => ({
 	// 入口
 	input: {
-		index: 'src/main.js',
+		index: 'src/main.ts',
 		...cModuleMap
 	},
 	// 出口
@@ -85,7 +87,7 @@ const creatModule = (cModuleMap, external) => ({
 	},
 	plugins: [
 		clear({
-			targets: ['es']
+			targets: ['es', 'lib']
 		}),
 
 		postcss({
@@ -99,9 +101,13 @@ const creatModule = (cModuleMap, external) => ({
 			inject: false, // dev 环境下的 样式是入住到 js 中的，其他环境不会注入
 			extract: false // 无论是 dev 还是其他环境这个配置项都不做 样式的抽离
 		}),
-
+		typescript({
+			clean: true,
+			tsconfig: "./tsconfig.json",
+			useTsconfigDeclarationDir: true
+		}),
 		eslint({
-			include: ['src/**/*.js'],
+			include: ['src/**/*.ts'],
 			fix: true
 		}),
 		resolve(),
@@ -115,7 +121,7 @@ const creatModule = (cModuleMap, external) => ({
  * style
  */
 const creatModuleStyle = (moduleName, external) => ({
-	input: `src/web/${moduleName}/index.js`,
+	input: `src/web/${moduleName}/index.ts`,
 	output: {
 		file: `garbage/${moduleName}.js`,
 		format: 'es',
@@ -124,6 +130,7 @@ const creatModuleStyle = (moduleName, external) => ({
 		clear({
 			targets: ['garbage']
 		}),
+
 		// css 处理，暂时没有加插件
 		postcss({
 			// modules: true, // 增加 css-module 功能
@@ -137,6 +144,9 @@ const creatModuleStyle = (moduleName, external) => ({
 			extract: `es/${moduleName}/style/css/index.css`
 		}),
 		resolve(),
+		typescript({
+			clean: true
+		}),
 		stylePlugin('web'),
 		...basePlugin()
 	],
@@ -162,6 +172,11 @@ const basePlugin = () => ([
 		],
 		"plugins": [
 			"babel-plugin-add-module-exports"
+		],
+		extensions: [
+			...DEFAULT_EXTENSIONS,
+			'.ts',
+			'.tsx'
 		]
 	})
 ]);

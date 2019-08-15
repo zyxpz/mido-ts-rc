@@ -12,11 +12,11 @@ interface Stats {
 
 export default class <%=name%> extends React.Component<Props, Stats> {
 
-  public defaultProps = {
+  public static defaultProps = {
     text: '<%=name%>'
   }
 
-  public propTypes = {
+  public static propTypes = {
     text: PropTypes.string
   }
 

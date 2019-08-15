@@ -5,3 +5,4 @@ node_modules/**
 package-lock
 dist
 src/web/*/__test__
+temp

@@ -12,22 +12,22 @@ interface Stats {
 
 export default class Demo extends React.Component<Props, Stats> {
 
-  public defaultProps = {
-    text: 'Demo'
+  public static defaultProps = {
+  	text: 'Demo'
   }
 
-  public propTypes = {
-    text: PropTypes.string
+  public static propTypes = {
+  	text: PropTypes.string
   }
 
   public state = {}
 
   public render() {
-    const {
-      text
-    } = this.props;
-    return (
-      <div className="Demo">{text}</div>
-    )
+  	const {
+  		text
+  	} = this.props;
+  	return (
+  		<div className="Demo">{text}</div>
+  	);
   }
 }
