@@ -1,4 +1,4 @@
-# mido-rc
+# mido-ts-rc
 
 <details>
 <summary>开发</summary>
