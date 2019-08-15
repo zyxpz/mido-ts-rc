@@ -6,6 +6,7 @@
   "bugs": {},
   "main": "es/index/index.js",
   "module": "es/index/index.js",
+  "types": "lib/main.d.ts",
   "directories": {
     "es": "es"
   },
@@ -95,6 +96,7 @@
   ],
   "files": [
     "es",
+    "lib",
     "package.json",
     "README.md"
   ]
