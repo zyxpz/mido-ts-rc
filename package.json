@@ -77,11 +77,15 @@
     "react": ">=16.8.x"
   },
   "lint-staged": {
-    "{src,config}/**/*.{js,jsx}": [
+    "config/*.{js,jsx}": [
       "esw --fix",
       "git add"
     ],
     "src/**/*.{ts,tsx}": [
+      "esw --fix",
+      "git add"
+    ],
+    "src/**/*.{js,jsx}": [
       "esw --fix",
       "git add",
       "npm run test"
