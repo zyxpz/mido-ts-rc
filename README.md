@@ -22,12 +22,12 @@
 ## 使用方式 => 按需加载，需要安装 `babel-plugin-import`
 
 ```vim
-import conponentName from 'mido-rc/es/componentName';
+import conponentName from 'mido-ts-rc/es/componentName';
 
 // 引入css
-import 'mido-rc/es/componentName/style/css';
+import 'mido-ts-rc/es/componentName/style/css';
 // 引入less
-import 'mido-rc/es/componentName/style'
+import 'mido-ts-rc/es/componentName/style'
 ```
 
 ```vim
@@ -42,7 +42,7 @@ npm install babel-plugin-import --save-dev
 		[
 			"import",
 				{
-					"libraryName": "mido-rc",
+					"libraryName": "mido-ts-rc",
 					"libraryDirectory": "es",
                     "style": true
 				}
@@ -54,7 +54,7 @@ npm install babel-plugin-import --save-dev
 - 使用
 
 ```js
-import { xxx } from 'mido-rc';
+import { xxx } from 'mido-ts-rc';
 ```
 </details>
 
