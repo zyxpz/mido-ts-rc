@@ -1,8 +1,10 @@
+const { join } = require('path')
+const { type } = require('os')
 /**
  * 设置预览html
  */
 exports.setHtml = (file) => {
-	return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
   <html lang="zh">
   <head>
     <meta charset="UTF-8">
@@ -28,20 +30,36 @@ exports.setHtml = (file) => {
  * 设置预览js
  */
 exports.setIndex = (name, file) => {
-	return `import './${name}.html';
-         import '${file}';`;
+  return `import './${name}.html';
+         import '${type() === 'Windows_NT' ?
+          file.replace(/\\/g, '/\\') :
+          file
+        }';`;
 };
 
 /**
  * 设置entry
  */
 exports.webpackEntry = (arr) => {
-	const d = arr.map(item => {
-		return `'${[item.name]}': '${item.path}'
-    `;
-	});
-	return `exports.entry = {
-    index: '${process.cwd()}/source/index.html',
+  let d;
+  if (type() === 'Windows_NT') {
+    d = arr.map(item => {
+      const cpPath = item.path.replace(/\\/g, '/\\');
+      return `'${[item.name]}': '${cpPath}'
+      `;
+    });
+  } else {
+    d = arr.map(item => {
+      return `'${[item.name]}': '${item.path}'
+      `;
+    });
+  }
+
+  return `exports.entry = {
+    index: '${type() === 'Windows_NT' ?
+      join(process.cwd(), 'source', 'index.html').replace(/\\/g, '/\\') :
+      join(process.cwd(), 'source', 'index.html')
+    }',
     ${d}
   }`;
 };
@@ -50,10 +68,10 @@ exports.webpackEntry = (arr) => {
  * 组件写入main
  */
 exports.main = (arr) => {
-	const d = arr.map(item => {
-		return `
+  const d = arr.map(item => {
+    return `
     export { default as ${item.name} } from './web/${item.name}';\n
     `;
-	});
-	return d;
+  });
+  return d;
 };

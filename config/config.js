@@ -2,7 +2,7 @@ import path from 'path';
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const { entry } = require(path.join(process.cwd(), './source/entry'));
+const { entry } = require(path.join(process.cwd(), 'source', 'entry'));
 
 const milieu = process.env.NODE_ENV || 'development';
 
