@@ -15,9 +15,9 @@
       ]
     },
     "sourceMap": false,
-    "declaration": true,
-    // 声明文件路径
-    "declarationDir": "./lib"
+    // "declaration": true,
+    // // 声明文件路径
+    // "declarationDir": "./lib"
   },
   "exclude": [
     "node_modules",

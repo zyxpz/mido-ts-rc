@@ -62,7 +62,7 @@ process.stdin.on('data', (chunk) => {
 
 	const srcDir = path.join(process.cwd(), 'temp', 'creatProject');
 
-	const destDir = path.join(process.cwd(), 'src/web', newChunk);
+	const destDir = path.join(process.cwd(), 'src', 'web', newChunk);
 
 	creat(srcDir, destDir, newChunk);
 

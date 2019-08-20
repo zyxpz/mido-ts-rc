@@ -104,7 +104,14 @@ const creatModule = (cModuleMap, external) => ({
 		typescript({
 			clean: true,
 			tsconfig: "./tsconfig.json",
-			useTsconfigDeclarationDir: true
+			useTsconfigDeclarationDir: true,
+			tsconfigDefaults: {
+				compilerOptions: {
+					"declaration": true,
+					// 声明文件路径
+					"declarationDir": "./lib"
+				}
+			}
 		}),
 		eslint({
 			include: ['src/**/*.ts'],
@@ -145,7 +152,7 @@ const creatModuleStyle = (moduleName, external) => ({
 		}),
 		resolve(),
 		typescript({
-			clean: true
+			clean: true,
 		}),
 		stylePlugin('web'),
 		...basePlugin()

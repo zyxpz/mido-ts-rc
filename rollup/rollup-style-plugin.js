@@ -9,7 +9,7 @@ let cpName = '';
 
 const writeStyle = (file, cpLess) => {
 	// 打包后路径
-	const fileEsPath = path.join(process.cwd(), 'es', file, 'style/less/index.less');
+	const fileEsPath = path.join(process.cwd(), 'es', file, 'style', 'index.less');
 	fs.outputFileSync(fileEsPath, cpLess);
 
 	/**
@@ -17,16 +17,16 @@ const writeStyle = (file, cpLess) => {
    * 按需加载 style:true
    * 通过js直接引入
    */
-	const lessFile = path.join(process.cwd(), 'es', file, 'style/index.js');
-	fs.outputFileSync(lessFile, `import './less/index.less';`);
+	const lessFile = path.join(process.cwd(), 'es', file, 'style', 'index.js');
+	fs.outputFileSync(lessFile, `import './index.less';`);
 
 	/**
    * 在css文件中写入js
    * 按需加载 style: 'css'
    * 通过js直接引入
    */
-	const cssFile = path.join(process.cwd(), 'es', file, 'style/css/index.js');
-	fs.outputFileSync(cssFile, `import './index.css';`);
+	const cssFile = path.join(process.cwd(), 'es', file, 'css.js');
+	fs.outputFileSync(cssFile, `import './css/index.css';`);
 };
 
 export default (fileName) => {
