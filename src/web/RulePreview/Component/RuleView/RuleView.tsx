@@ -1,32 +1,29 @@
 import * as React from 'react';
 
-interface Props {
-  name?: string
-}
+import { ContextProps } from '../../util';
 
 interface States { }
 
-export default class RuleView extends React.PureComponent<Props, States> {
+export default class RuleView extends React.PureComponent<ContextProps, States> {
 
-  public state = {}
+	public state = {}
 
-  public componentDidMount() {
-  	console.log(this.props);
-  }
+	public handleClick() {
+		const {
+			updata
+		} = this.props;
+		updata('ch');
+	}
 
-  public handleClick() {
-  	console.log(this.props);
-  }
-
-  public render() {
-  	const {
-  		name,
-  	} = this.props;
-  	return (
-  		<div onClick={() => { this.handleClick(); }}>
-  			{name}
-  		</div>
-  	);
-  }
+	public render() {
+		const {
+			name,
+		} = this.props;
+		return (
+			<div onClick={() => { this.handleClick(); }}>
+				{name}
+			</div>
+		);
+	}
 
 }

@@ -2,22 +2,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import './RulePreview.less';
 
-interface ContextProps {
-  name?: string;
-  ruleHooks: {
-    updata: (name: string) => void
-  }
-
-}
-
-const contextProps = {
-	name: 'mxl',
-	ruleHooks: {
-		updata: () => null
-	}
-};
-
-const RuleContext = React.createContext<ContextProps>(contextProps);
+import { RuleContext } from './util';
 
 import { RuleConfig, RuleView } from './Component';
 
@@ -39,32 +24,32 @@ interface Props {
 }
 
 interface Stats {
-
+	name: string;
 }
 
 export default class RulePreview extends React.Component<Props, Stats> {
 
-  public static RuleConfig: any;
+	public state = {
+		name: 'mxl'
+	}
 
-  public static RuleView: any;
+	public handleUpdate = () => (name: string) => {
+		this.setState({ name });
+	}
 
-  public state = {}
+	public render() {
+		const {
+			name
+		} = this.state;
 
-  public handleUpdate = () => ({
-  	updata: (name: string) => {
-  		this.setState({ name });
-  	}
-  })
-
-  public render() {
-  	return (
-  		<RuleContext.Provider value={{
-  			name: 'mxl',
-  			ruleHooks: this.handleUpdate()
-  		}}>
-  			<RuleViewConsumer />
-  			<RuleConfigConsumer />
-  		</RuleContext.Provider>
-  	);
-  }
+		return (
+			<RuleContext.Provider value={{
+				name,
+				updata: this.handleUpdate()
+			}}>
+				<RuleViewConsumer />
+				<RuleConfigConsumer />
+			</RuleContext.Provider>
+		);
+	}
 }
