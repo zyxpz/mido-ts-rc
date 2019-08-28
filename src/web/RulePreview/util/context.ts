@@ -1,12 +1,14 @@
 import * as React from 'react';
 
 export interface ContextProps {
-  name?: string;
-  updata: (name: string) => void;
+  view?: boolean;
+  updata: (params: {}) => void;
+  parentProps?: any;
+  extParams?: any
 }
 
 const contextProps = {
-	name: 'mxl',
+	view: true,
 	updata: () => null
 };
 

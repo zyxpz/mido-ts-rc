@@ -7,49 +7,91 @@ import { RuleContext } from './util';
 import { RuleConfig, RuleView } from './Component';
 
 // context 转化props
-const RuleConfigConsumer = () =>
+const RuleConfigConsumer = (props: any) =>
 	<RuleContext.Consumer>
-		{context => <RuleConfig {...context} />}
+		{context => <RuleConfig {...context} {...props} />}
 	</RuleContext.Consumer>;
 
 
-const RuleViewConsumer = () =>
+const RuleViewConsumer = (props: any) =>
 	<RuleContext.Consumer>{
-		context => <RuleView {...context} />
+		context => <RuleView {...context} {...props} />
 	}
 	</RuleContext.Consumer>;
 
+/**
+ * defaultData  默认数据
+ * view 是否展示预览 默认展示
+ */
 interface Props {
-
+	defaultData?: any;
+	view?: boolean;
 }
 
 interface Stats {
-	name: string;
+	view?: boolean;
+	defaultData: any,
+	language: string
 }
 
 export default class RulePreview extends React.Component<Props, Stats> {
 
-	public state = {
-		name: 'mxl'
+	public static RuleView: any;
+
+	public static RuleConfig: any;
+
+	public static defaultProps = {
+		defalutData: {},
+		view: true
 	}
 
-	public handleUpdate = () => (name: string) => {
-		this.setState({ name });
+	public static propTypes = {
+		defalutData: PropTypes.any,
+		view: PropTypes.bool
+	}
+
+	public state = {
+		view: true,
+		defaultData: {},
+		language: 'ZH'
+	}
+
+	public componentDidMount() {
+		const {
+			view,
+			defaultData
+		} = this.props;
+
+		this.setState({ view,
+			defaultData });
+	}
+
+	public handleUpdate = () => (params: {}) => {
+		this.setState({ ...params });
 	}
 
 	public render() {
 		const {
-			name
+			view,
+			defaultData,
+			language
 		} = this.state;
-
+		const {
+			children,
+		} = this.props;
 		return (
 			<RuleContext.Provider value={{
-				name,
-				updata: this.handleUpdate()
+				view,
+				updata: this.handleUpdate(),
+				parentProps: { defaultData },
+				extParams: { language }
 			}}>
-				<RuleViewConsumer />
-				<RuleConfigConsumer />
+				{children}
 			</RuleContext.Provider>
 		);
 	}
 }
+
+RulePreview.RuleView = RuleViewConsumer;
+
+RulePreview.RuleConfig = RuleConfigConsumer;

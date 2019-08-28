@@ -1,16 +1,18 @@
-export const configColumns = [
+import lang from './lang';
+
+export const configColumns = (language: string) => [
 	{
-		title: '条件',
+		title: lang(language).conditions,
 		dataIndex: 'name',
 		key: 'name',
 	},
 	{
-		title: '条件内容',
+		title: lang(language).conditionsContent,
 		dataIndex: 'age',
 		key: 'age',
 	},
 	{
-		title: '操作',
+		title: lang(language).operation,
 		dataIndex: 'address',
 		key: 'address',
 	},

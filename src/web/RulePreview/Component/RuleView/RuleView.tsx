@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { ContextProps } from '../../util';
 
+// import './RuleView.less';
+
 interface States { }
 
 export default class RuleView extends React.PureComponent<ContextProps, States> {
@@ -12,17 +14,31 @@ export default class RuleView extends React.PureComponent<ContextProps, States> 
 		const {
 			updata
 		} = this.props;
-		updata('ch');
+		updata({ view: false });
 	}
 
 	public render() {
 		const {
-			name,
+			view,
 		} = this.props;
 		return (
-			<div onClick={() => { this.handleClick(); }}>
-				{name}
-			</div>
+			<React.Fragment>{
+				view ?
+					<div className="mido-view-wrap">
+						<div className="mido-view-wrap-header">
+							<div className="title">预览</div>
+							<button
+								type="button"
+								onClick={() => { this.handleClick(); }}
+							>关闭</button>
+						</div>
+						<div className="mido-view-wrap-main">
+							main
+						</div>
+					</div> :
+					null
+			}</React.Fragment>
+
 		);
 	}
 
