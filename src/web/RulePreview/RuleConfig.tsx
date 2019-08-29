@@ -1,9 +1,8 @@
 import { Col, Radio, Row, Table } from 'antd';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import './RuleConfig.less';
 
-import { configColumns, lang } from '../../util';
+import { configColumns, lang } from './util';
 
 interface State {
 	dataSource: Array<{}>,

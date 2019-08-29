@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import { ContextProps } from '../../util';
-
-// import './RuleView.less';
+import { ContextProps } from './util';
 
 interface States { }
 

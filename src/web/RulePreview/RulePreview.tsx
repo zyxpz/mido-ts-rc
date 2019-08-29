@@ -4,7 +4,9 @@ import './RulePreview.less';
 
 import { RuleContext } from './util';
 
-import { RuleConfig, RuleView } from './Component';
+import RuleConfig from './RuleConfig';
+
+import RuleView from './RuleView';
 
 // context 转化props
 const RuleConfigConsumer = (props: any) =>
