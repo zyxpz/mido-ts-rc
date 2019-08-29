@@ -1,0 +1,34 @@
+.mido-view-wrap {
+  border: solid 1px #d3d3d3;
+  margin: 20px;
+  border-radius: 5px;
+}
+.mido-view-wrap-header {
+  height: 80px;
+  padding: 20px;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mido-view-wrap-header .title {
+  font-size: 28px;
+}
+.mido-view-wrap-header button {
+  width: 70px;
+  height: 50px;
+  background-color: #f7faff;
+  border: solid 1px #d3dbec;
+}
+.mido-view-wrap-main {
+  padding: 20px;
+  background-color: #fff;
+}
+.rule-config-wrap {
+  margin: 6px 20px 20px;
+}
+.rule-config-wrap .rule-config-header-left span {
+  font-size: 24px;
+  color: yellowgreen;
+}
+
