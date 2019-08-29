@@ -12,7 +12,8 @@ import path from 'path';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 import babel from 'rollup-plugin-babel';
 import clear from 'rollup-plugin-clear';
-import { eslint } from 'rollup-plugin-eslint';
+// import { eslint } from 'rollup-plugin-eslint';
+import tslint from 'rollup-plugin-tslint';
 import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
@@ -80,7 +81,7 @@ const creatModule = (cModuleMap, external) => ({
 	// 出口
 	output: {
 		dir: 'es', // 可以是 dir 表示输出目录 也可以是 file 表示输出文件
-		format: 'es', // 输出的格式 可以是 cjs commonJs 规范 | es es Module 规范 | iife 浏览器可引入的规范
+		format: 'esm', // 输出的格式 可以是 cjs commonJs 规范 | es es Module 规范 | iife 浏览器可引入的规范
 		sourceMap: true,
 		entryFileNames: '[name]/index.js',
 		exports: 'named'
@@ -113,7 +114,7 @@ const creatModule = (cModuleMap, external) => ({
 				}
 			}
 		}),
-		eslint({
+		tslint({
 			include: ['src/**/*.ts'],
 			fix: true
 		}),
@@ -178,7 +179,12 @@ const basePlugin = () => ([
 			"@babel/preset-react"
 		],
 		"plugins": [
-			"babel-plugin-add-module-exports"
+			"babel-plugin-add-module-exports",
+			["import", {
+				libraryName: 'antd',
+				libraryDirectory: 'es',
+				style: true
+			}]
 		],
 		extensions: [
 			...DEFAULT_EXTENSIONS,
