@@ -67,6 +67,45 @@ const rollupConfig = () => {
 	);
 };
 
+const creatUmd = (external) => ({
+	input: 'src/main.ts',
+	output: {
+		file: 'umd/index.js',
+		format: 'umd',
+		name: 'index'
+	},
+	plugins: [
+		clear({
+			targets: ['umd']
+		}),
+
+		postcss({
+			// modules: true, // 增加 css-module 功能
+			extensions: ['.less', '.css'],
+			use: [
+				['less', {
+					javascriptEnabled: true
+				}]
+			],
+			inject: false, // dev 环境下的 样式是入住到 js 中的，其他环境不会注入
+			extract: false // 无论是 dev 还是其他环境这个配置项都不做 样式的抽离
+		}),
+		typescript({
+			clean: true,
+			tsconfig: "./tsconfig.json",
+			useTsconfigDeclarationDir: true
+		}),
+		tslint({
+			include: ['src/**/*.ts'],
+			fix: true
+		}),
+		resolve(),
+		...basePlugin(),
+	],
+	// 将模块视为外部模块，不会打包在库中
+	external: id => external.some(e => id.indexOf(e) === 0),
+});
+
 /**
  * 
  * @param {component} cModuleMap 
