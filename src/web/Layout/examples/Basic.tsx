@@ -4,10 +4,11 @@ import ReactDom from 'react-dom';
 
 import './index.less';
 
-const list = [
-	1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-	1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9
-];
+const list = [];
+
+for (let index = 0; index < 40; index++) {
+	list.push(`main-${index}`);
+}
 
 ReactDom.render(
 	<Layout>
