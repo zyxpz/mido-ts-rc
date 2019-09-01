@@ -1,5 +1,7 @@
 # mido-ts-rc
 
+### [预览](https://zyxpz.github.io/mido-ts-rc/dist/)
+
 <details>
 <summary>开发</summary>
 
@@ -59,3 +61,5 @@ import { xxx } from 'mido-ts-rc';
 </details>
 
 ## 组件
+- [layout](https://zyxpz.github.io/mido-ts-rc/dist/Layout/Layout.html)
+- [RulePreview](https://zyxpz.github.io/mido-ts-rc/dist/RulePreview/RulePreview.html)
