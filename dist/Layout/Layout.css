@@ -20,6 +20,9 @@
   background: #fff;
 }
 
+body {
+  overflow: hidden;
+}
 #app {
   height: 100%;
 }
