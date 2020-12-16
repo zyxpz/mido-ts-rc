@@ -1,0 +1,31 @@
+@prefix-cls: ~'mido-imgPreview';
+
+.@{prefix-cls} {
+	&-wrap {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		overflow: hidden;
+
+		&-content {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 1000;
+			margin: auto;
+			background-repeat: no-repeat;
+			background-size: cover;
+			visibility: hidden;
+			opacity: 0;
+
+			&-active {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+}

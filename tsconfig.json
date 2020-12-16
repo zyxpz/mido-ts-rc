@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "strict": true,
+    "strict": false,
     // 此处设置为node,才能解析import xx from 'xx'
     "moduleResolution": "node",
     "target": "esnext",

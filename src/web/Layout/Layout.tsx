@@ -94,6 +94,7 @@ class BasicLayout extends React.Component<BasicPropsTagName, BasicLayoutState> {
 
 		return (
 			<LayoutContext.Provider value={{ siderHook: {} }}>
+				{/* @ts-ignore */}
 				<Tag className={`${clsTagName}`} {...others}>
 					{children}
 				</Tag>
