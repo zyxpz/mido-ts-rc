@@ -10,14 +10,15 @@
     "jsx": "react",
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "src/*"
+      "@/main": [
+        "src/main"
       ]
     },
     "sourceMap": false,
     // "declaration": true,
     // // 声明文件路径
     // "declarationDir": "./lib"
+    "typeRoots": ["./typings/*"]
   },
   "exclude": [
     "node_modules",
@@ -25,6 +26,5 @@
     "build",
     "mock",
     "temp",
-    "src/web/**/examples"
   ]
 }

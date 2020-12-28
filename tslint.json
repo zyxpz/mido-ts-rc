@@ -18,7 +18,6 @@
     "no-mixed-spaces-and-tabs": false
   },
   "linterOptions": {
-    // 排除的文件
     "exclude": [
       "config/**/*.js",
       "node_modules/**"

@@ -1,4 +1,3 @@
-// tslint: disable
 import React, { Fragment, useState, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import './ImgPreview.less';
